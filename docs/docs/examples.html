@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examples &mdash; google_translate 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="google_translate 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Contribute" href="contribute.html"/>
+        <link rel="prev" title="Introduction" href="intro.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> google_translate
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#translate">Translate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-translations">Additional Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detect-source-language">Detect Source Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detect-typos">Detect typos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#text-romanization">Text romanization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-logging">Python logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#proxy">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-agent">User-Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#caching">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced">Advanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">Command line</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">google_translate</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Examples</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="https://github.com/MrS0m30n3/google-translate/blob/master/examples.rst" class="fa fa-github"> Edit on GitHub</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>Below are some basic examples. See the <a class="reference internal" href="api.html"><span class="doc">API</span></a> page for more details.</p>
+<div class="section" id="translate">
+<h2>Translate<a class="headerlink" href="#translate" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Translate single word:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+<span class="nb">print</span> <span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">,</span> <span class="s2">&quot;fr&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Translate multiple words:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+
+<span class="n">words_to_translate</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;pencil&quot;</span><span class="p">]</span>
+<span class="n">translated_words</span> <span class="o">=</span> <span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">words_to_translate</span><span class="p">,</span> <span class="s2">&quot;russian&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Translate multiple words and get dictionary output:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+
+<span class="n">words_to_translate</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;pencil&quot;</span><span class="p">]</span>
+<span class="n">translation_dict</span> <span class="o">=</span> <span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">words_to_translate</span><span class="p">,</span> <span class="s2">&quot;russian&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;dict&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">translation_dict</span>  <span class="c1"># {&#39;car&#39;: &#39;автомобиль&#39;, &#39;pencil&#39;: &#39;карандаш&#39;, &#39;text&#39;: &#39;текст&#39;}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="additional-translations">
+<h2>Additional Translations<a class="headerlink" href="#additional-translations" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Get additional translations in json format:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+<span class="nb">print</span> <span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;house&quot;</span><span class="p">,</span> <span class="s2">&quot;greek&quot;</span><span class="p">,</span> <span class="n">additional</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="detect-source-language">
+<h2>Detect Source Language<a class="headerlink" href="#detect-source-language" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Detect source language single word:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+<span class="nb">print</span> <span class="n">translator</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Detect source language multiple words:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+<span class="n">languages</span> <span class="o">=</span> <span class="n">translator</span><span class="o">.</span><span class="n">detect</span><span class="p">([</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;καλησπέρα&quot;</span><span class="p">,</span> <span class="s2">&quot;こんにちは&quot;</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">lang</span> <span class="ow">in</span> <span class="n">languages</span><span class="p">:</span> <span class="nb">print</span> <span class="n">lang</span>  <span class="c1"># &#39;english&#39; &#39;greek&#39; &#39;japanese&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="detect-typos">
+<h2>Detect typos<a class="headerlink" href="#detect-typos" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Detect typos single word:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+<span class="nb">print</span> <span class="n">translator</span><span class="o">.</span><span class="n">word_exists</span><span class="p">(</span><span class="s2">&quot;computor&quot;</span><span class="p">)</span>  <span class="c1"># Returns False</span>
+</pre></div>
+</div>
+<p>Detect typos single word with language specified:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+<span class="nb">print</span> <span class="n">translator</span><span class="o">.</span><span class="n">word_exists</span><span class="p">(</span><span class="s2">&quot;καλησπέρα&quot;</span><span class="p">,</span> <span class="s2">&quot;greek&quot;</span><span class="p">)</span>  <span class="c1"># Returns True</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="text-romanization">
+<h2>Text romanization<a class="headerlink" href="#text-romanization" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Romanize multiple words:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+<span class="n">rom_words</span> <span class="o">=</span> <span class="n">translator</span><span class="o">.</span><span class="n">romanize</span><span class="p">([</span><span class="s2">&quot;σπίτι&quot;</span><span class="p">,</span> <span class="s2">&quot;дом&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span> <span class="n">rom_words</span>  <span class="c1"># [u&#39;spíti&#39;, u&#39;dom&#39;]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="python-logging">
+<h2>Python logging<a class="headerlink" href="#python-logging" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Simple use case:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+<span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="s2">&quot;ja&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="proxy">
+<h2>Proxy<a class="headerlink" href="#proxy" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Use single proxy:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span><span class="p">,</span> <span class="n">ProxySelector</span>
+
+<span class="n">proxy_selector</span> <span class="o">=</span> <span class="n">ProxySelector</span><span class="p">(</span><span class="s2">&quot;127.0.0.1:1337&quot;</span><span class="p">)</span>
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">(</span><span class="n">proxy_selector</span><span class="p">)</span>
+
+<span class="c1"># do other stuff</span>
+</pre></div>
+</div>
+<p>Use multiple proxies from file (one per line):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span><span class="p">,</span> <span class="n">ProxySelector</span>
+
+<span class="n">proxy_selector</span> <span class="o">=</span> <span class="n">ProxySelector</span><span class="p">(</span><span class="n">proxy_file</span><span class="o">=</span><span class="s2">&quot;proxies&quot;</span><span class="p">)</span>
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">(</span><span class="n">proxy_selector</span><span class="p">)</span>
+
+<span class="c1"># do other stuff</span>
+</pre></div>
+</div>
+<p>Use multiple proxies from file with random selection:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span><span class="p">,</span> <span class="n">ProxySelector</span>
+
+<span class="n">proxy_selector</span> <span class="o">=</span> <span class="n">ProxySelector</span><span class="p">(</span><span class="n">proxy_file</span><span class="o">=</span><span class="s2">&quot;proxies&quot;</span><span class="p">,</span> <span class="n">random_selection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">(</span><span class="n">proxy_selector</span><span class="p">)</span>
+
+<span class="c1"># do other stuff</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="user-agent">
+<h2>User-Agent<a class="headerlink" href="#user-agent" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Specify single user-agent to use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span><span class="p">,</span> <span class="n">UserAgentSelector</span>
+
+<span class="n">ua_selector</span> <span class="o">=</span> <span class="n">UserAgentSelector</span><span class="p">(</span><span class="s2">&quot;my-user-agent&quot;</span><span class="p">)</span>
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">(</span><span class="n">ua_selector</span><span class="o">=</span><span class="n">ua_selector</span><span class="p">)</span>
+
+<span class="c1"># do other stuff</span>
+</pre></div>
+</div>
+<p>Load user-agents from the Internet:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span><span class="p">,</span> <span class="n">UserAgentSelector</span>
+
+<span class="n">ua_selector</span> <span class="o">=</span> <span class="n">UserAgentSelector</span><span class="p">(</span><span class="n">http_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">(</span><span class="n">ua_selector</span><span class="o">=</span><span class="n">ua_selector</span><span class="p">)</span>
+
+<span class="c1"># do other stuff</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="caching">
+<h2>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Store translation cache to file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+
+<span class="c1"># do stuff here</span>
+
+<span class="n">translator</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="s2">&quot;mycache&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Load translation cache from file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+<span class="n">translator</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;mycache&quot;</span><span class="p">)</span>
+
+<span class="c1"># do other stuff</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="advanced">
+<h2>Advanced<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Translate .txt file content line by line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;file.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">input_file</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">input_file</span><span class="p">]</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+
+<span class="n">tcontent</span> <span class="o">=</span> <span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;french&quot;</span><span class="p">)</span>
+
+<span class="c1"># When an error occurs GoogleTranslator returns None</span>
+<span class="n">tcontent</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">tcontent</span> <span class="k">if</span> <span class="n">line</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;trans-file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+    <span class="n">output_file</span><span class="o">.</span><span class="n">writelines</span><span class="p">([</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">tcontent</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Use multiple user-agents with multiple proxies (random selection)</p>
+<p>and prevent sending requests without a proxy:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">GoogleTranslator</span><span class="p">,</span>
+    <span class="n">UserAgentSelector</span><span class="p">,</span>
+    <span class="n">ProxySelector</span>
+<span class="p">)</span>
+
+<span class="n">uselector</span> <span class="o">=</span> <span class="n">UserAgentSelector</span><span class="p">(</span><span class="n">http_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">pselector</span> <span class="o">=</span> <span class="n">ProxySelector</span><span class="p">(</span><span class="n">proxy_file</span><span class="o">=</span><span class="s2">&quot;proxies&quot;</span><span class="p">,</span>
+                          <span class="n">prevent_fallback</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                          <span class="n">random_selection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">(</span><span class="n">pselector</span><span class="p">,</span> <span class="n">uselector</span><span class="p">)</span>
+
+<span class="c1"># do other stuff here</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contribute.html" class="btn btn-neutral float-right" title="Contribute" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral" title="Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, MrS0m30n3.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
