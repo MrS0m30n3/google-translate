@@ -9,5 +9,8 @@ include devscripts/*
 recursive-include docs *
 
 prune docs/_build
+prune docs/docs
+
+exclude docs/.nojekyll
 
 global-exclude *.pyc
