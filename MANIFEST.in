@@ -13,4 +13,4 @@ prune docs/docs
 
 exclude docs/.nojekyll
 
-global-exclude *.pyc
+global-exclude *.pyc *.png
