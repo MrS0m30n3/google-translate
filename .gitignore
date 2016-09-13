@@ -7,3 +7,5 @@ MANIFEST
 dist/
 build/
 docs/_build
+
+!docs/docs/_static/*.png
