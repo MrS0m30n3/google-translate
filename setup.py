@@ -11,7 +11,7 @@ from google_translate import __version__
 setup(
     version             = __version__,
     license             = "Unlicense",
-    name                = "google-translate",
+    name                = "doodle-translate",
     author_email        = "ytubedlg@gmail.com",
     author              = "Sotiris Papadopoulos",
     url                 = "https://github.com/MrS0m30n3/google-translate",
