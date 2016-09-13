@@ -39,4 +39,4 @@ Send a pull request
 
 Not sure how to help?
 ---------------------
-    The TODO list #TODO add link is a good place to start.
+    The `TODO <https://github.com/MrS0m30n3/google-translate/blob/master/TODO>`_ list is a good place to start.
