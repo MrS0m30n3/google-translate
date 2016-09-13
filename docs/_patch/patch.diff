@@ -1,0 +1,256 @@
+--- _build/html/api.html	2016-09-12 21:30:13.385449319 +0300
++++ api.html	2016-09-12 21:29:44.724806700 +0300
+@@ -142,15 +142,19 @@
+ <p><a class="reference internal" href="#google_translate.UserAgentSelector" title="google_translate.UserAgentSelector"><code class="xref py py-class docutils literal"><span class="pre">google_translate.UserAgentSelector</span></code></a></p>
+ <p><a class="reference internal" href="#google_translate.ProxySelector" title="google_translate.ProxySelector"><code class="xref py py-class docutils literal"><span class="pre">google_translate.ProxySelector</span></code></a></p>
+ <p><a class="reference internal" href="#google_translate.cache.Cache" title="google_translate.cache.Cache"><code class="xref py py-class docutils literal"><span class="pre">google_translate.cache.Cache</span></code></a></p>
+-<br><div class="admonition note">
++<br>
++<a id="output-types"></a>
++<div class="admonition note">
+ <p class="first admonition-title">Note</p>
+ <p class="last">Valid output types are: <strong>text, dict, json</strong></p>
+ </div>
++<a id="language-format"></a>
+ <div class="admonition note">
+ <p class="first admonition-title">Note</p>
+ <p>Source and destination language can be either in the short format (e.g. &#8220;en&#8221;)</p>
+ <p class="last">or in long format (e.g. &#8220;english&#8221;). Source language can also take the &#8216;auto&#8217; value.</p>
+ </div>
++<a id="info-dict"></a>
+ <p>Info dictionary structure example:</p>
+ <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+     <span class="s2">&quot;original_text&quot;</span><span class="p">:</span> <span class="s2">&quot;word&quot;</span><span class="p">,</span>
+@@ -189,93 +193,6 @@
+ <li>typo detection</li>
+ </ul>
+ </div></blockquote>
+-<p class="rubric">Examples</p>
+-<p>Use GoogleTranslator to translate multiple words:</p>
+-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+-
+-<span class="gp">&gt;&gt;&gt; </span><span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+-<span class="gp">&gt;&gt;&gt; </span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">],</span> <span class="s2">&quot;french&quot;</span><span class="p">)</span>
+-</pre></div>
+-</div>
+-<p>Use GoogleTranslator to get additional translations in json format:</p>
+-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+-
+-<span class="gp">&gt;&gt;&gt; </span><span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+-<span class="gp">&gt;&gt;&gt; </span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;greek&quot;</span><span class="p">,</span> <span class="n">additional</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+-</pre></div>
+-</div>
+-<p>Use GoogleTranslator to detect the source language of multiple words:</p>
+-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+-
+-<span class="gp">&gt;&gt;&gt; </span><span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+-<span class="gp">&gt;&gt;&gt; </span><span class="n">translator</span><span class="o">.</span><span class="n">detect</span><span class="p">([</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;bonjour&quot;</span><span class="p">])</span>
+-</pre></div>
+-</div>
+-<p>Use GoogleTranslator to check multiple words for typos:</p>
+-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">google_translate</span> <span class="k">import</span> <span class="n">GoogleTranslator</span>
+-
+-<span class="gp">&gt;&gt;&gt; </span><span class="n">translator</span> <span class="o">=</span> <span class="n">GoogleTranslator</span><span class="p">()</span>
+-<span class="gp">&gt;&gt;&gt; </span><span class="n">translator</span><span class="o">.</span><span class="n">word_exists</span><span class="p">([</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;computor&quot;</span><span class="p">],</span> <span class="s2">&quot;english&quot;</span><span class="p">)</span>
+-</pre></div>
+-</div>
+-<dl class="attribute">
+-<dt id="GoogleTranslator.LANGUAGES_DB">
+-<code class="descname">LANGUAGES_DB</code><a class="headerlink" href="#GoogleTranslator.LANGUAGES_DB" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>string</em> &#8211; Absolute path to the languages file.</p>
+-</dd></dl>
+-
+-<dl class="attribute">
+-<dt id="GoogleTranslator.WAIT_MIN">
+-<code class="descname">WAIT_MIN</code><a class="headerlink" href="#GoogleTranslator.WAIT_MIN" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>float</em> &#8211; Minimum time to wait when &#8216;random_wait&#8217; is enabled.</p>
+-</dd></dl>
+-
+-<dl class="attribute">
+-<dt id="GoogleTranslator.WAIT_MAX">
+-<code class="descname">WAIT_MAX</code><a class="headerlink" href="#GoogleTranslator.WAIT_MAX" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>float</em> &#8211; Maximum time to wait when &#8216;random_wait&#8217; is enabled.</p>
+-</dd></dl>
+-
+-<dl class="attribute">
+-<dt id="GoogleTranslator.MAX_INPUT_SIZE">
+-<code class="descname">MAX_INPUT_SIZE</code><a class="headerlink" href="#GoogleTranslator.MAX_INPUT_SIZE" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>int</em> &#8211; Maximum length of the word to process. Currently
+-only GET requests are supported which limits the maximum word size.</p>
+-</dd></dl>
+-
+-<dl class="attribute">
+-<dt id="GoogleTranslator.MAX_CACHE_SIZE">
+-<code class="descname">MAX_CACHE_SIZE</code><a class="headerlink" href="#GoogleTranslator.MAX_CACHE_SIZE" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>int</em> &#8211; The number of items that the cache can store.</p>
+-</dd></dl>
+-
+-<dl class="attribute">
+-<dt id="GoogleTranslator.CACHE_VALID_PERIOD">
+-<code class="descname">CACHE_VALID_PERIOD</code><a class="headerlink" href="#GoogleTranslator.CACHE_VALID_PERIOD" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>float</em> &#8211; Time period in seconds for which the cache
+-items are valid.</p>
+-</dd></dl>
+-
+-<dl class="attribute">
+-<dt id="GoogleTranslator.DEFAULT_USERAGENT">
+-<code class="descname">DEFAULT_USERAGENT</code><a class="headerlink" href="#GoogleTranslator.DEFAULT_USERAGENT" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>string</em> &#8211; Default user-agent to use when there is no
+-&#8216;User-Agent&#8217; header in the _user_specific_headers and a ua_selector
+-is not defined.</p>
+-</dd></dl>
+-
+-<dl class="attribute">
+-<dt id="GoogleTranslator.DOMAIN_NAME">
+-<code class="descname">DOMAIN_NAME</code><a class="headerlink" href="#GoogleTranslator.DOMAIN_NAME" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>string</em> &#8211; Domain name of Google translate. Note that
+-different top level domains return different data.</p>
+-</dd></dl>
+-
+-<dl class="attribute">
+-<dt id="GoogleTranslator.REQUEST_URL">
+-<code class="descname">REQUEST_URL</code><a class="headerlink" href="#GoogleTranslator.REQUEST_URL" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>string</em> &#8211; Google translate API url template.</p>
+-</dd></dl>
+ 
+ <table class="docutils field-list" frame="void" rules="none">
+ <col class="field-name" />
+@@ -334,8 +251,8 @@
+ <tbody valign="top">
+ <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+ <li><strong>word</strong> (<em>string - list&lt;string&gt;</em>) &#8211; Word(s) to process.</li>
+-<li><strong>output</strong> (<em>string</em>) &#8211; Output return type. See _convert_output method
+-for a list of valid output types (default: text).</li>
++<li><strong>output</strong> (<em>string</em>) &#8211; Output return type.
++See <a href="#output-types">Output Types</a> for a list of valid output types (default: text).</li>
+ </ul>
+ </td>
+ </tr>
+@@ -353,18 +270,18 @@
+ <dt id="google_translate.GoogleTranslator.get_info_dict">
+ <code class="descname">get_info_dict</code><span class="sig-paren">(</span><em>word</em>, <em>dst_lang</em>, <em>src_lang=u'auto'</em>, <em>output=u'text'</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.GoogleTranslator.get_info_dict" title="Permalink to this definition">¶</a></dt>
+ <dd><p>Returns the information dictionary for the given word.</p>
+-<p>For a list with available dictionary keys, see _extract_data method.</p>
++<p>For a list with available dictionary keys, see <a href="#info-dict">Info Dict</a>.</p>
+ <table class="docutils field-list" frame="void" rules="none">
+ <col class="field-name" />
+ <col class="field-body" />
+ <tbody valign="top">
+ <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+ <li><strong>word</strong> (<em>string - list&lt;string&gt;</em>) &#8211; Word(s) to process.</li>
+-<li><strong>dst_lang</strong> (<em>string</em>) &#8211; Destination language to use. See _validate_language
+-method for valid language formats.</li>
++<li><strong>dst_lang</strong> (<em>string</em>) &#8211; Destination language to use.
++See <a href="#language-format">Language Format</a> for valid language formats.</li>
+ <li><strong>src_lang</strong> (<em>string</em>) &#8211; Source language to use (default: auto).</li>
+-<li><strong>output</strong> (<em>string</em>) &#8211; Output return type. See _convert_output method for
+-a list of valid output types (default: text).</li>
++<li><strong>output</strong> (<em>string</em>) &#8211; Output return type.
++See <a href="#output-types">Output Types</a> for a list of valid output types (default: text).</li>
+ </ul>
+ </td>
+ </tr>
+@@ -385,10 +302,10 @@
+ <tbody valign="top">
+ <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+ <li><strong>word</strong> (<em>string - list&lt;string&gt;</em>) &#8211; Word(s) to process.</li>
+-<li><strong>src_lang</strong> (<em>string</em>) &#8211; Source language of the given word(s). See
+-_validate_language method for valid language formats (default: auto).</li>
+-<li><strong>output</strong> (<em>string</em>) &#8211; Output return type. See _convert_output method
+-for a list of valid output types (default: text).</li>
++<li><strong>src_lang</strong> (<em>string</em>) &#8211; Source language of the given word(s).
++See <a href="#language-format">Language Format</a> for valid language formats (default: auto).</li>
++<li><strong>output</strong> (<em>string</em>) &#8211; Output return type.
++See <a href="#output-types">Output Types</a> for a list of valid output types (default: text).</li>
+ </ul>
+ </td>
+ </tr>
+@@ -412,12 +329,12 @@
+ <tbody valign="top">
+ <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+ <li><strong>word</strong> (<em>string - list&lt;string</em>) &#8211; Word(s) to translate.</li>
+-<li><strong>dst_lang</strong> (<em>string</em>) &#8211; Language to translate the given word(s). See
+-_validate_language method for valid language formats.</li>
++<li><strong>dst_lang</strong> (<em>string</em>) &#8211; Language to translate the given word(s).
++See <a href="#language-format">Language Format</a> for valid language formats.</li>
+ <li><strong>src_lang</strong> (<em>string</em>) &#8211; Source language of the given word(s) (default: auto).</li>
+ <li><strong>additional</strong> (<em>boolean</em>) &#8211; When True translate will return additional translations.</li>
+-<li><strong>output</strong> (<em>string</em>) &#8211; Output return type. See _convert_output method
+-for a list of valid output types (default: text).</li>
++<li><strong>output</strong> (<em>string</em>) &#8211; Output return type.
++See <a href="#output-types">Output Types</a> for a list of valid output types (default: text).</li>
+ </ul>
+ </td>
+ </tr>
+@@ -449,10 +366,10 @@
+ <tbody valign="top">
+ <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+ <li><strong>word</strong> (<em>string - list&lt;string&gt;</em>) &#8211; Word(s) to check.</li>
+-<li><strong>lang</strong> (<em>string</em>) &#8211; Language to check. See _validate_language method for
+-valid language formats (default: en).</li>
+-<li><strong>output</strong> (<em>string</em>) &#8211; Output return type. See _convert_output method
+-for a list of valid output types (default: text).</li>
++<li><strong>lang</strong> (<em>string</em>) &#8211; Language to check.
++See <a href="#language-format">Language Format</a> for valid language formats (default: en).</li>
++<li><strong>output</strong> (<em>string</em>) &#8211; Output return type.
++See <a href="#output-types">Output Types</a> for a list of valid output types (default: text).</li>
+ </ul>
+ </td>
+ </tr>
+@@ -477,7 +394,7 @@
+ <dd><p>Select user-agent base on some criterias.</p>
+ <p>UserAgentSelector supports three basic modes. Single user-agent given by
+ the user, multiple user-agents from a file (one per line) and multiple
+-user-agents loaded from the handy list of &#8216;techblog.willhouse.com&#8217;. You can
++user-agents loaded from the handy list of &#8216;techblog.willhouse.com&#8217;<a class="footnote-reference" href="#f1" id="id1">[1]</a>. You can
+ also enable all the modes together or different combinations of them. Note
+ that the user defined ua always overwrites the other user-agents (from file
+ or HTTP). By default when multiple user-agents are used the get_useragent()
+@@ -497,18 +414,6 @@
+ <span class="gp">&gt;&gt;&gt; </span><span class="n">ua_selector</span><span class="o">.</span><span class="n">get_useragent</span><span class="p">()</span>
+ </pre></div>
+ </div>
+-<dl class="attribute">
+-<dt id="UserAgentSelector.DEFAULT_UA">
+-<code class="descname">DEFAULT_UA</code><a class="headerlink" href="#UserAgentSelector.DEFAULT_UA" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>string</em> &#8211; Default user-agent to use.</p>
+-</dd></dl>
+-
+-<dl class="attribute">
+-<dt id="UserAgentSelector.HTTP_URL">
+-<code class="descname">HTTP_URL</code><a class="headerlink" href="#UserAgentSelector.HTTP_URL" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>string</em> &#8211; Place to load user-agents from when
+-http_mode is enabled.</p>
+-</dd></dl>
+ 
+ <table class="docutils field-list" frame="void" rules="none">
+ <col class="field-name" />
+@@ -629,19 +534,6 @@
+ <span class="gp">&gt;&gt;&gt; </span><span class="n">new_cache</span><span class="o">.</span><span class="n">remove_old</span><span class="p">()</span>     <span class="c1"># Remove all the old items</span>
+ </pre></div>
+ </div>
+-<dl class="attribute">
+-<dt id="Cache._VALUE">
+-<code class="descname">_VALUE</code><a class="headerlink" href="#Cache._VALUE" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>int</em> &#8211; Static number(index) that points to the value part of
+-the cache item.</p>
+-</dd></dl>
+-
+-<dl class="attribute">
+-<dt id="Cache._TIMESTAMP">
+-<code class="descname">_TIMESTAMP</code><a class="headerlink" href="#Cache._TIMESTAMP" title="Permalink to this definition">¶</a></dt>
+-<dd><p><em>int</em> &#8211; Static number(index) that points to the timestamp
+-part of the cache item.</p>
+-</dd></dl>
+ 
+ <table class="docutils field-list" frame="void" rules="none">
+ <col class="field-name" />
+@@ -765,7 +657,7 @@
+ <table class="docutils footnote" frame="void" id="f1" rules="none">
+ <colgroup><col class="label" /><col /></colgroup>
+ <tbody valign="top">
+-<tr><td class="label">[1]</td><td>&lt;<a class="reference external" href="https://techblog.willshouse.com/2012/01/03/most-common-user-agents/">https://techblog.willshouse.com/2012/01/03/most-common-user-agents/</a>&gt;</td></tr>
++<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>&lt;<a class="reference external" href="https://techblog.willshouse.com/2012/01/03/most-common-user-agents/">https://techblog.willshouse.com/2012/01/03/most-common-user-agents/</a>&gt;</td></tr>
+ </tbody>
+ </table>
+ </div>

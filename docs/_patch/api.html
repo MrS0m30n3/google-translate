@@ -1,0 +1,734 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>API &mdash; google_translate 0.1 documentation</title>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+
+
+
+
+    <link rel="top" title="google_translate 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Command line" href="cmdline.html"/>
+        <link rel="prev" title="Contribute" href="contribute.html"/>
+
+
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+
+
+
+            <a href="index.html" class="icon icon-home"> google_translate
+
+
+
+          </a>
+
+
+
+
+              <div class="version">
+                0.1
+              </div>
+
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+
+
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribute</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#main-classes">Main classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-classes">Other classes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">Command line</a></li>
+</ul>
+
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">google_translate</a>
+      </nav>
+
+
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+
+    <li>API</li>
+      <li class="wy-breadcrumbs-aside">
+
+
+            <a href="https://github.com/username/reponame/blob/master/api.rst" class="fa fa-github"> Edit on GitHub</a>
+
+
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <div class="section" id="api">
+<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#google_translate.GoogleTranslator" title="google_translate.GoogleTranslator"><code class="xref py py-class docutils literal"><span class="pre">google_translate.GoogleTranslator</span></code></a></p>
+<p><a class="reference internal" href="#google_translate.UserAgentSelector" title="google_translate.UserAgentSelector"><code class="xref py py-class docutils literal"><span class="pre">google_translate.UserAgentSelector</span></code></a></p>
+<p><a class="reference internal" href="#google_translate.ProxySelector" title="google_translate.ProxySelector"><code class="xref py py-class docutils literal"><span class="pre">google_translate.ProxySelector</span></code></a></p>
+<p><a class="reference internal" href="#google_translate.cache.Cache" title="google_translate.cache.Cache"><code class="xref py py-class docutils literal"><span class="pre">google_translate.cache.Cache</span></code></a></p>
+<br>
+<a id="output-types"></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Valid output types are: text, dict, json</p>
+</div>
+<a id="language-format"></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Source and destination language can be either in the short format (e.g. &#8220;en&#8221;)</p>
+<p class="last">or in long format (e.g. &#8220;english&#8221;). Source language can also take the &#8216;auto&#8217; value.</p>
+</div>
+<a id="info-dict"></a>
+<p>Info dictionary structure example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;original_text&quot;</span><span class="p">:</span> <span class="s2">&quot;word&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;translation&quot;</span><span class="p">:</span> <span class="s2">&quot;translated-word&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;romanization&quot;</span><span class="p">:</span> <span class="s2">&quot;romanized-word&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;has_typo&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;src_lang&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;extra&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;verbs&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;verb1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;trans1&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;verb2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;trans1&quot;</span><span class="p">,</span> <span class="s2">&quot;trans2&quot;</span><span class="p">,</span> <span class="s2">&quot;trans3&quot;</span><span class="p">,</span> <span class="s2">&quot;trans4&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;nouns&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;nouns1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;trans1&quot;</span><span class="p">,</span> <span class="s2">&quot;trans2&quot;</span><span class="p">,</span> <span class="s2">&quot;trans3&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;adjectives&quot;</span> <span class="p">{</span>
+            <span class="s2">&quot;adjective1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;trans1&quot;</span><span class="p">,</span> <span class="s2">&quot;trans2&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;match&quot;</span><span class="p">:</span> <span class="mf">1.0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="main-classes">
+<h2>Main classes<a class="headerlink" href="#main-classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="google_translate.GoogleTranslator">
+<em class="property">class </em><code class="descclassname">google_translate.</code><code class="descname">GoogleTranslator</code><span class="sig-paren">(</span><em>proxy_selector=None</em>, <em>ua_selector=None</em>, <em>simulate=False</em>, <em>https=True</em>, <em>timeout=10.0</em>, <em>retries=5</em>, <em>wait_time=1.0</em>, <em>random_wait=False</em>, <em>encoding=u'UTF-8'</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.GoogleTranslator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the Google translate API to provide different functionalities.</p>
+<p>GoogleTranslator currently provides four different functionalities.</p>
+<blockquote>
+<div><ul class="simple">
+<li>word translation</li>
+<li>source language detection</li>
+<li>romanization</li>
+<li>typo detection</li>
+</ul>
+</div></blockquote>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>proxy_selector</strong> (<a class="reference internal" href="#google_translate.ProxySelector" title="google_translate.ProxySelector"><em>ProxySelector</em></a>) &#8211; Object used to pick a proxy.</li>
+<li><strong>ua_selector</strong> (<a class="reference internal" href="#google_translate.UserAgentSelector" title="google_translate.UserAgentSelector"><em>UserAgentSelector</em></a>) &#8211; Object used to pick a user-agent.</li>
+<li><strong>simulate</strong> (<em>boolean</em>) &#8211; When True no real requests will be sent.</li>
+<li><strong>https</strong> (<em>boolean</em>) &#8211; Enable-disable HTTPS.</li>
+<li><strong>timeout</strong> (<em>float</em>) &#8211; Socket timeout in seconds.</li>
+<li><strong>retries</strong> (<em>int</em>) &#8211; Maximum attempts number before giving up.</li>
+<li><strong>wait_time</strong> (<em>float</em>) &#8211; Time in seconds to wait between requests.</li>
+<li><strong>random_wait</strong> (<em>boolean</em>) &#8211; When True GoogleTranslator will wait a random
+amount of seconds instead of using the wait_time.</li>
+<li><strong>encoding</strong> (<em>string</em>) &#8211; Encoding to use during data encode-decode.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="google_translate.GoogleTranslator.add_header">
+<code class="descname">add_header</code><span class="sig-paren">(</span><em>header</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.GoogleTranslator.add_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add HTTP header to user specific headers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>header</strong> (<em>tuple</em>) &#8211; Tuple that contains two values the header
+name and the header value (e.g. (&#8216;Host&#8217;, &#8216;test.com&#8217;)).</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">User specific headers overwrite the default headers.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.GoogleTranslator.detect">
+<code class="descname">detect</code><span class="sig-paren">(</span><em>word</em>, <em>output=u'text'</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.GoogleTranslator.detect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect the source language of the given word(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>word</strong> (<em>string - list&lt;string&gt;</em>) &#8211; Word(s) to process.</li>
+<li><strong>output</strong> (<em>string</em>) &#8211; Output return type.
+See <a href="#output-types">Output Types</a> for a list of valid output types (default: text).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">String with the source language name-code.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.GoogleTranslator.get_info_dict">
+<code class="descname">get_info_dict</code><span class="sig-paren">(</span><em>word</em>, <em>dst_lang</em>, <em>src_lang=u'auto'</em>, <em>output=u'text'</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.GoogleTranslator.get_info_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the information dictionary for the given word.</p>
+<p>For a list with available dictionary keys, see <a href="#info-dict">Info Dict</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>word</strong> (<em>string - list&lt;string&gt;</em>) &#8211; Word(s) to process.</li>
+<li><strong>dst_lang</strong> (<em>string</em>) &#8211; Destination language to use.
+See <a href="#language-format">Language Format</a> for valid language formats.</li>
+<li><strong>src_lang</strong> (<em>string</em>) &#8211; Source language to use (default: auto).</li>
+<li><strong>output</strong> (<em>string</em>) &#8211; Output return type.
+See <a href="#output-types">Output Types</a> for a list of valid output types (default: text).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.GoogleTranslator.romanize">
+<code class="descname">romanize</code><span class="sig-paren">(</span><em>word</em>, <em>src_lang=u'auto'</em>, <em>output=u'text'</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.GoogleTranslator.romanize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the romanization of the given word(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>word</strong> (<em>string - list&lt;string&gt;</em>) &#8211; Word(s) to process.</li>
+<li><strong>src_lang</strong> (<em>string</em>) &#8211; Source language of the given word(s).
+See <a href="#language-format">Language Format</a> for valid language formats (default: auto).</li>
+<li><strong>output</strong> (<em>string</em>) &#8211; Output return type.
+See <a href="#output-types">Output Types</a> for a list of valid output types (default: text).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">String with the romanized word.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.GoogleTranslator.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>word</em>, <em>dst_lang</em>, <em>src_lang=u'auto'</em>, <em>additional=False</em>, <em>output=u'text'</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.GoogleTranslator.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate the given word(s) from src_lang to dst_lang.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>word</strong> (<em>string - list&lt;string</em>) &#8211; Word(s) to translate.</li>
+<li><strong>dst_lang</strong> (<em>string</em>) &#8211; Language to translate the given word(s).
+See <a href="#language-format">Language Format</a> for valid language formats.</li>
+<li><strong>src_lang</strong> (<em>string</em>) &#8211; Source language of the given word(s) (default: auto).</li>
+<li><strong>additional</strong> (<em>boolean</em>) &#8211; When True translate will return additional translations.</li>
+<li><strong>output</strong> (<em>string</em>) &#8211; Output return type.
+See <a href="#output-types">Output Types</a> for a list of valid output types (default: text).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>If additional is True.</dt>
+<dd><p class="first last">Dictionary with the additional translations.</p>
+</dd>
+<dt>If additional is False.</dt>
+<dd><p class="first last">String with the translated word.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.GoogleTranslator.word_exists">
+<code class="descname">word_exists</code><span class="sig-paren">(</span><em>word</em>, <em>lang=u'en'</em>, <em>output=u'text'</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.GoogleTranslator.word_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given word(s) exist in language.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>word</strong> (<em>string - list&lt;string&gt;</em>) &#8211; Word(s) to check.</li>
+<li><strong>lang</strong> (<em>string</em>) &#8211; Language to check.
+See <a href="#language-format">Language Format</a> for valid language formats (default: en).</li>
+<li><strong>output</strong> (<em>string</em>) &#8211; Output return type.
+See <a href="#output-types">Output Types</a> for a list of valid output types (default: text).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if the word exists else False.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="other-classes">
+<h2>Other classes<a class="headerlink" href="#other-classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="google_translate.UserAgentSelector">
+<em class="property">class </em><code class="descclassname">google_translate.</code><code class="descname">UserAgentSelector</code><span class="sig-paren">(</span><em>user_agent=None</em>, <em>user_agent_file=None</em>, <em>http_mode=False</em>, <em>single_ua=False</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.UserAgentSelector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select user-agent base on some criterias.</p>
+<p>UserAgentSelector supports three basic modes. Single user-agent given by
+the user, multiple user-agents from a file (one per line) and multiple
+user-agents loaded from the handy list of &#8216;techblog.willhouse.com&#8217;<a class="footnote-reference" href="#f1" id="id1">[1]</a>. You can
+also enable all the modes together or different combinations of them. Note
+that the user defined ua always overwrites the other user-agents (from file
+or HTTP). By default when multiple user-agents are used the get_useragent()
+method returns a user-agent randomly, but if you set single_ua to True then
+UserAgentSelector will pick a user-agent during the initialization and
+stick with it.</p>
+<p class="rubric">Examples</p>
+<p>Use single user-agent:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ua_selector</span> <span class="o">=</span> <span class="n">UserAgentSelector</span><span class="p">(</span><span class="s2">&quot;Mozilla9000&quot;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ua_selector</span><span class="o">.</span><span class="n">get_useragent</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Use multiple user-agents from HTTP:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ua_selector</span> <span class="o">=</span> <span class="n">UserAgentSelector</span><span class="p">(</span><span class="n">http_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ua_selector</span><span class="o">.</span><span class="n">get_useragent</span><span class="p">()</span>
+</pre></div>
+</div>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>user_agent</strong> (<em>string</em>) &#8211; User defined user-agent.</li>
+<li><strong>user_agent_file</strong> (<em>string</em>) &#8211; Absolute path to file that contains multiple
+user-agent entries, one per line.</li>
+<li><strong>http_mode</strong> (<em>boolean</em>) &#8211; When True UserAgentSelector will try to retrieve a
+list of user-agents from the place that HTTP_URL points to.</li>
+<li><strong>single_ua</strong> (<em>boolean</em>) &#8211; When True UserAgentSelector will pick a single ua
+and stick with it, even when multiple user-agents are defined
+(from file or HTTP)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="google_translate.UserAgentSelector.get_useragent">
+<code class="descname">get_useragent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.UserAgentSelector.get_useragent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a user-agent to the user.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="google_translate.ProxySelector">
+<em class="property">class </em><code class="descclassname">google_translate.</code><code class="descname">ProxySelector</code><span class="sig-paren">(</span><em>proxy=None</em>, <em>proxy_file=None</em>, <em>prevent_fallback=False</em>, <em>random_selection=False</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.ProxySelector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select proxy base on some criterias.</p>
+<p>ProxySelector supports two proxy modes. Single proxy given by the user or
+multiple proxies from a file. You can also use both of them in which case
+the user defined proxy overwrites the proxies from the file. ProxySelector
+can choose multiple proxies either by using the given sequence or by
+picking one randomly. ProxySelector can detect duplicate entries &amp; invalid
+ip addresses (currently only IPv4 is supported). Finally the user has the
+ability to remove non working proxies.</p>
+<p class="rubric">Examples</p>
+<p>Use single proxy (not very handy):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">proxy_selector</span> <span class="o">=</span> <span class="n">ProxySelector</span><span class="p">(</span><span class="s2">&quot;127.0.0.1:8080&quot;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proxy</span> <span class="o">=</span> <span class="n">proxy_selector</span><span class="o">.</span><span class="n">get_proxy</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Use multiple proxies from file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">proxy_selector</span> <span class="o">=</span> <span class="n">ProxySelector</span><span class="p">(</span><span class="n">proxy_file</span><span class="o">=</span><span class="s2">&quot;my_proxies&quot;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">proxy</span> <span class="o">=</span> <span class="n">proxy_selector</span><span class="o">.</span><span class="n">get_proxy</span><span class="p">()</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>proxy</strong> (<em>string</em>) &#8211; User defined proxy.</li>
+<li><strong>proxy_file</strong> (<em>string</em>) &#8211; Absolute path to file that contains multiple
+proxy entries, one per line.</li>
+<li><strong>prevent_fallback</strong> (<em>boolean</em>) &#8211; When True ProxySelector will always return
+a proxy even if the proxy does not work (good to avoid making a
+request without one).</li>
+<li><strong>random_selection</strong> (<em>boolean</em>) &#8211; When True ProxySelector will pick a proxy
+randomly unlike the normal sequence mode.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="google_translate.ProxySelector.get_proxy">
+<code class="descname">get_proxy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.ProxySelector.get_proxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a proxy back to the user.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="google_translate.ProxySelector.is_valid_proxy">
+<em class="property">static </em><code class="descname">is_valid_proxy</code><span class="sig-paren">(</span><em>proxy</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.ProxySelector.is_valid_proxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Static method to check if the given proxy is valid.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.ProxySelector.remove_proxy">
+<code class="descname">remove_proxy</code><span class="sig-paren">(</span><em>proxy</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.ProxySelector.remove_proxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the given proxy from the ProxySelector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>proxy</strong> (<em>string</em>) &#8211; Proxy string in the format &#8220;ip:port&#8221;.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True on success else False.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="google_translate.cache.Cache">
+<em class="property">class </em><code class="descclassname">google_translate.cache.</code><code class="descname">Cache</code><span class="sig-paren">(</span><em>max_size</em>, <em>valid_period</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.cache.Cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store objects for a period of time.</p>
+<p>Cache like object that uses a dictionary to store multiple objects for a
+period of time. This cache can also be stored in a json file for later use.</p>
+<p class="rubric">Examples</p>
+<p>Simple use case:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">google_translate.cache</span> <span class="k">import</span> <span class="n">Cache</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cache</span> <span class="o">=</span> <span class="n">Cache</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">3600.0</span><span class="p">)</span> <span class="c1"># Store items for 1 hour</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cache</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">value</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cache</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="s1">&#39;mycache&#39;</span><span class="p">)</span>     <span class="c1"># Store our cache in &#39;mycache&#39; file</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_cache</span> <span class="o">=</span> <span class="n">Cache</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mf">300.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_cache</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mycache&#39;</span><span class="p">)</span>  <span class="c1"># Load items from &#39;mycache&#39; file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_cache</span><span class="o">.</span><span class="n">remove_old</span><span class="p">()</span>     <span class="c1"># Remove all the old items</span>
+</pre></div>
+</div>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>max_size</strong> (<em>int</em>) &#8211; Maximum number of items that the cache can store. The
+cache automatically removes the oldest item when it reaches
+the max_size.</li>
+<li><strong>valid_period</strong> (<em>float</em>) &#8211; Time in seconds that the cache items are valid.
+This value can be changed after the object initialization.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="google_translate.cache.Cache.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>key</em>, <em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.cache.Cache.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add new item to the cache.</p>
+<p>Adds the key-obj combination to the cache. If the cache reaches the
+max_size then the oldest item is automatically removed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>key</strong> (<em>hashable type</em>) &#8211; Key under which the obj will be stored.</li>
+<li><strong>obj</strong> (<em>object</em>) &#8211; Object to store in the cache.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.cache.Cache.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.cache.Cache.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get item from the cache.</p>
+<p>Returns the item corresponding to the given key if the given key exists
+else None. Note that if the timestamp of the item is old then it will
+return None even if the key exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<em>hashable type</em>) &#8211; Key to search for.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.cache.Cache.get_oldest">
+<code class="descname">get_oldest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.cache.Cache.get_oldest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the oldest key in the cache if one exists else None.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.cache.Cache.has">
+<code class="descname">has</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.cache.Cache.has" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the key is in the cache else False.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.cache.Cache.has_space">
+<code class="descname">has_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.cache.Cache.has_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the cache has not reached the max_size else False.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.cache.Cache.items">
+<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.cache.Cache.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list with (key, [obj, timestamp]) pairs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.cache.Cache.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.cache.Cache.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the cache content from the given filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True on success else False.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The cache stops adding new items when it reaches the max_size.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.cache.Cache.remove_old">
+<code class="descname">remove_old</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.cache.Cache.remove_old" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove old items from the cache.</p>
+<p>Removes all the items with invalid timestamp from the cache
+and returns the number of the items removed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="google_translate.cache.Cache.store">
+<code class="descname">store</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#google_translate.cache.Cache.store" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store the cache to the given filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True on success else False.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>&lt;<a class="reference external" href="https://techblog.willshouse.com/2012/01/03/most-common-user-agents/">https://techblog.willshouse.com/2012/01/03/most-common-user-agents/</a>&gt;</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+
+        <a href="cmdline.html" class="btn btn-neutral float-right" title="Command line" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+
+
+        <a href="contribute.html" class="btn btn-neutral" title="Contribute" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+
+    </div>
+
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, MrS0m30n3.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+
+
+
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+
+
+
+
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+
+
+</body>
+</html>

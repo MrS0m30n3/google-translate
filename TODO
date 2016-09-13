@@ -1,0 +1,7 @@
+* Refactor tests
+* GoogleTranslator text to speech (audio) ?
+* GoogleTranslator speaking ?
+* ProxySelector proxies from http
+* Ιntergrade the file translation into the GoogleTranslator object
+* Add support for Python 3.*
+* Αdd POST support
