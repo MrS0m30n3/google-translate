@@ -1,6 +1,7 @@
 MANIFEST
 
 *.pyc
+*.png
 *.egg-info
 
 dist/
