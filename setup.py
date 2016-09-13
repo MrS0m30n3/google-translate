@@ -5,12 +5,15 @@
 
 from setuptools import setup
 
-from google_translate import __version__
+from google_translate import (
+    __version__,
+    __license__
+)
 
 
 setup(
     version             = __version__,
-    license             = "Unlicense",
+    license             = __license__,
     name                = "doodle-translate",
     author_email        = "ytubedlg@gmail.com",
     author              = "Sotiris Papadopoulos",
