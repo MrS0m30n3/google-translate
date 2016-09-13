@@ -18,6 +18,8 @@ import google_translate
 
 def create_diagram(function, *args, **kwargs):
     with PyCallGraph(output=GraphvizOutput()):
+        print "Creating diagram for: %s" % function
+        print "args=%s kwargs=%s" % (args, kwargs)
         function(*args, **kwargs)
 
 
