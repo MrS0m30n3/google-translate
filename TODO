@@ -1,10 +1,13 @@
+* Cache: add clear method
+* google-translate script: add config file
+* google-translate script: auto typo correction
+
+* GoogleTranslator: text to speech (audio)
+* GoogleTranslator: pronunciation (text)
+* GoogleTranslator: examples - definitions
+
 * Refactor tests
-* GoogleTranslator text to speech (audio) ?
-* GoogleTranslator speaking ?
-* GoogleTranslator examples - definitions
+* Αdd POST support
+* Add support for Python 3.*
 * ProxySelector proxies from http
 * Ιntergrade the file translation into the GoogleTranslator object
-* Add support for Python 3.*
-* Αdd POST support
-* google-translate script: retrieve default language to use from config file
-* google-translate script: auto typo correction
