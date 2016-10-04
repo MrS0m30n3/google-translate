@@ -19,6 +19,8 @@ if [[ $1 == "clean" ]]; then
     make clean
 fi
 
+mkdir -p $DOCS_PUBLIC
+
 make html
 
 echo "Applying patch to 'api.html'..."
