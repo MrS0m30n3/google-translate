@@ -1,7 +1,10 @@
 * Refactor tests
 * GoogleTranslator text to speech (audio) ?
 * GoogleTranslator speaking ?
+* GoogleTranslator examples - definitions
 * ProxySelector proxies from http
 * Ιntergrade the file translation into the GoogleTranslator object
 * Add support for Python 3.*
 * Αdd POST support
+* google-translate script: retrieve default language to use from config file
+* google-translate script: auto typo correction
