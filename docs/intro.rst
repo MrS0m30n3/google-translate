@@ -33,8 +33,8 @@ Installation
 
 From Source
 ^^^^^^^^^^^
-    1. Download & extract source from `here <https://github.com/MrS0m30n3/google-translate/archive/0.2.zip>`_
-    2. Change directory into **google-translate-0.2/**
+    1. Download & extract source from `here <https://github.com/MrS0m30n3/google-translate/archive/0.2.1.zip>`_
+    2. Change directory into **google-translate-0.2.1/**
     3. Run `sudo python setup.py install`
 
 From Pypi
