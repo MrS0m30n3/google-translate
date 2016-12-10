@@ -35,9 +35,9 @@ fi
 read -p "Publish docs on Github pages? (y/n) " choice
 
 if [[ $choice == 'y' || $choice == 'Y' ]]; then
-    cp -v -u "$BUILD_DIR/"*.html "$DOCS_PUBLIC"
-    cp -v -u "$BUILD_DIR/"*.js "$DOCS_PUBLIC"
-    cp -R -v -u "$BUILD_DIR/_static" "$DOCS_PUBLIC"
+    cp -v "$BUILD_DIR/"*.html "$DOCS_PUBLIC"
+    cp -v "$BUILD_DIR/"*.js "$DOCS_PUBLIC"
+    cp -R -v "$BUILD_DIR/_static" "$DOCS_PUBLIC"
 
     read -p "Commit changes? (y/n) " choice
 
