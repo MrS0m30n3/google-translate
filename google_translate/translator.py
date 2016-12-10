@@ -690,7 +690,7 @@ class GoogleTranslator(object):
             pass
 
         try:
-            data_dict["has_typo"] = json_list[7][-1]
+            data_dict["has_typo"] = json_list[7] != ""
         except IndexError:
             pass
 
