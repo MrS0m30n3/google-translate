@@ -218,8 +218,9 @@ class TestPrivateMethods(unittest.TestCase):
         mock_rand_uniform.assert_called_once_with(GoogleTranslator.WAIT_MIN, GoogleTranslator.WAIT_MAX)
         mock_sleep.assert_called_once_with(mock_rand_uniform.return_value)
 
+    @unittest.skip(b"Deprecated Google has changed the JSON reply")
     @mock.patch("google_translate.translator.json.loads")
-    def test_string_to_json(self, mock_json_loads):
+    def test_string_to_json_old(self, mock_json_loads):
         translator = GoogleTranslator()
 
         mock_json_loads.side_effect = ValueError("json decode error")
@@ -233,6 +234,23 @@ class TestPrivateMethods(unittest.TestCase):
 
         self.assertEqual(translator._string_to_json('[[["a","b",,,1],[,,"c","d"]],"e",,,1,,[0]]'), mock_json_loads.return_value)
         mock_json_loads.assert_called_once_with('[[["a","b","","",1],["","","c","d"]],"e","","",1,"",[0]]')
+
+        self.assertIsNone(translator._string_to_json(123456))
+
+    @mock.patch("google_translate.translator.json.loads")
+    def test_string_to_json(self, mock_json_loads):
+        translator = GoogleTranslator()
+
+        mock_json_loads.side_effect = ValueError("json decode error")
+
+        self.assertIsNone(translator._string_to_json("data"))
+        mock_json_loads.assert_called_once_with("data")
+
+        mock_json_loads.reset_mock()
+        mock_json_loads.side_effect = None
+
+        self.assertEqual(translator._string_to_json('[[["a","b",null,null,1],[null,null,"c","d"]],"e",null,null,1,null,[0]]'), mock_json_loads.return_value)
+        mock_json_loads.assert_called_once_with('[[["a","b",null,null,1],[null,null,"c","d"]],"e",null,null,1,null,[0]]')
 
         self.assertIsNone(translator._string_to_json(123456))
 
@@ -307,6 +325,18 @@ class TestPrivateMethods(unittest.TestCase):
                 ],
                 "",
                 "en"
+            ],
+            # New input type see https://github.com/MrS0m30n3/google-translate/issues/5
+            [
+                [["t1", "o1", None, None, 0], [None, None, None, "r1"]],
+                None,
+                "ru",
+                None,
+                None,
+                None,
+                0.666,
+                None,
+                [["ru"], None, [0.666], ["ru"]]
             ]
         ]
 
@@ -378,6 +408,15 @@ class TestPrivateMethods(unittest.TestCase):
                     "romanization": "This is a very long line that\ncontinues to the next one.",
                     "src_lang": "en",
                     "match": 1.0,
+                    "extra": {},
+                    "has_typo": False
+                },
+                {
+                    "translation": "t1",
+                    "original_text": "o1",
+                    "romanization": "r1",
+                    "src_lang": "ru",
+                    "match": 0.666,
                     "extra": {},
                     "has_typo": False
                 }
