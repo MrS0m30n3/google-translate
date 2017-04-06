@@ -63,7 +63,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'google_translate'
-copyright = u'2016, MrS0m30n3'
+copyright = u'2017, MrS0m30n3'
 author = u'MrS0m30n3'
 
 # The version info for the project you're documenting, acts as replacement for
