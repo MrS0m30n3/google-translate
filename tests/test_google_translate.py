@@ -337,6 +337,19 @@ class TestPrivateMethods(unittest.TestCase):
                 0.666,
                 None,
                 [["ru"], None, [0.666], ["ru"]]
+            ],
+            [
+                [["t1", "o1", "", "", 0]],
+                [
+                    ["nouns", ["w1", "w2"], [["w1", ["t1", "t2"], "", 0.44], ["w2", ["t3", "t4"]]], "ooo", 1],
+                    ["adverbs", ["adv1"], [["adv1", ["t10"], "", 0.123]], "ooo", 4],
+                    ["prepositions", ["pre1", "pre2"], [["pre1", ["t8", "t9"], "", 0.0001], ["pre2", ["t3"], "", 0.005]], "ooo", 5]
+                ],
+                "en",
+                "",
+                "",
+                "",
+                1
             ]
         ]
 
@@ -418,6 +431,19 @@ class TestPrivateMethods(unittest.TestCase):
                     "src_lang": "ru",
                     "match": 0.666,
                     "extra": {},
+                    "has_typo": False
+                },
+                {
+                    "translation": "t1",
+                    "original_text": "o1",
+                    "romanization": "o1",
+                    "src_lang": "en",
+                    "match": 1.0,
+                    "extra": {
+                        "nouns": {"w1": ["t1", "t2"], "w2": ["t3", "t4"]},
+                        "adverbs": {"adv1": ["t10"]},
+                        "prepositions": {"pre1": ["t8", "t9"], "pre2": ["t3"]}
+                    },
                     "has_typo": False
                 }
         ]

@@ -658,7 +658,7 @@ class GoogleTranslator(object):
             Python dictionary.
 
         """
-        EXTRA_KEYS = {1: "nouns", 2: "verbs", 3: "adjectives"}
+        EXTRA_KEYS = {1: "nouns", 2: "verbs", 3: "adjectives", 4: "adverbs", 5: "prepositions"}
 
         data_dict = {
             "original_text": "",
