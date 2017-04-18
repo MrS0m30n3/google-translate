@@ -124,7 +124,7 @@ def main():
     # Add the extra HTTP headers to the translator
     if args.header is not None:
         for header in args.header:
-            translator.add_header(tuple(header.split(':')))
+            translator.add_header(tuple(header.split(':', 1)))
 
     results = None
 
