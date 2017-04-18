@@ -31,7 +31,7 @@ import logging
 if __package__ is None and not hasattr(sys, "frozen"):
     # Direct call no package installed
     PATH = os.path.realpath(os.path.abspath(__file__))
-    sys.path.append(os.path.dirname(os.path.dirname(PATH)))
+    sys.path.insert(0, os.path.dirname(os.path.dirname(PATH)))
 
 from google_translate import (
     UserAgentSelector,
