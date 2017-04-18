@@ -35,8 +35,15 @@ Info dictionary structure example::
             "nouns": {
                 "nouns1": ["trans1", "trans2", "trans3"]
             },
-            "adjectives" {
+            "adjectives": {
                 "adjective1": ["trans1", "trans2"]
+            },
+            "adverbs": {
+                "adverb1": ["trans1"],
+                "adverb2": ["trans2", "trans3"]
+            },
+            "prepositions": {
+                "preposition1": ["trans1"]
             }
         },
         "match": 1.0
