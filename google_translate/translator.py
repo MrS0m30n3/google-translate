@@ -690,7 +690,7 @@ class GoogleTranslator(object):
             pass
 
         try:
-            data_dict["has_typo"] = (json_list[7] != "" and json_list[7] is not None)
+            data_dict["has_typo"] = True if json_list[7] else False
         except IndexError:
             pass
 
