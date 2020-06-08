@@ -699,8 +699,13 @@ class GoogleTranslator(object):
             translation = []
             original_text = []
 
-            for item in json_list[0]:
-                if isinstance(item[-1], int):
+            translation_list = json_list[0]
+
+            if len(translation_list) > 1:
+                translation_list = json_list[0][:-1]
+
+            for item in translation_list:
+                if isinstance(item[4], int):
                     translation.append(item[0])
                     original_text.append(item[1])
 
