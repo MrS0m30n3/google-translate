@@ -6,8 +6,8 @@ See [docs](https://mrs0m30n3.github.io/google-translate/docs/) for more informat
 # INSTALLATION
 
 ### Install From Source
-1. Download & extract source from [here](https://github.com/MrS0m30n3/google-translate/archive/0.2.3.zip)
-2. Change directory into **google-translate-0.2.3/**
+1. Download & extract source from [here](https://github.com/MrS0m30n3/google-translate/archive/0.2.4.zip)
+2. Change directory into **google-translate-0.2.4/**
 3. Run `python setup.py install`
 
 ### Install From [Pypi](https://pypi.python.org/pypi/doodle-translate)
