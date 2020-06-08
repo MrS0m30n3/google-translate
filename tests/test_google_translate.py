@@ -350,6 +350,18 @@ class TestPrivateMethods(unittest.TestCase):
                 "",
                 "",
                 1
+            ],
+            # New input, JSON reply has some changes
+            [
+                [["t1", "o1", None, None, 0], [None, None, None, "r1"]],
+                None,
+                "ru",
+                None,
+                None,
+                None,
+                0.666,
+                [],
+                [["ru"], None, [0.666], ["ru"]]
             ]
         ]
 
@@ -444,6 +456,15 @@ class TestPrivateMethods(unittest.TestCase):
                         "adverbs": {"adv1": ["t10"]},
                         "prepositions": {"pre1": ["t8", "t9"], "pre2": ["t3"]}
                     },
+                    "has_typo": False
+                },
+                {
+                    "translation": "t1",
+                    "original_text": "o1",
+                    "romanization": "r1",
+                    "src_lang": "ru",
+                    "match": 0.666,
+                    "extra": {},
                     "has_typo": False
                 }
         ]
