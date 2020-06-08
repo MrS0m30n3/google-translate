@@ -690,6 +690,7 @@ class GoogleTranslator(object):
             pass
 
         try:
+            # When that thing is set it contains the word spelled right?!
             data_dict["has_typo"] = True if json_list[7] else False
         except IndexError:
             pass
@@ -701,6 +702,7 @@ class GoogleTranslator(object):
 
             translation_list = json_list[0]
 
+            # Exclude the romanization entry
             if len(translation_list) > 1:
                 translation_list = json_list[0][:-1]
 
