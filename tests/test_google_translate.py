@@ -362,6 +362,18 @@ class TestPrivateMethods(unittest.TestCase):
                 0.666,
                 [],
                 [["ru"], None, [0.666], ["ru"]]
+            ],
+            # New input, JSON reply for word_exists("σπιτι", "el") API has changes
+            [
+                [["t1", "o1", None, None, 11, None, None, [[], []], [[], []]], [None, None, None, "r1"]],
+                None,
+                "ru",
+                None,
+                None,
+                None,
+                1.0,
+                [],
+                [["ru"], None, [1.0], ["ru"]]
             ]
         ]
 
@@ -464,6 +476,15 @@ class TestPrivateMethods(unittest.TestCase):
                     "romanization": "r1",
                     "src_lang": "ru",
                     "match": 0.666,
+                    "extra": {},
+                    "has_typo": False
+                },
+                {
+                    "translation": "t1",
+                    "original_text": "o1",
+                    "romanization": "r1",
+                    "src_lang": "ru",
+                    "match": 1.0,
                     "extra": {},
                     "has_typo": False
                 }
