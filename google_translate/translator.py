@@ -28,7 +28,7 @@ from time import sleep
 try:
     from twodict import TwoWayOrderedDict
 except ImportError as error:
-    print error
+    print(error)
     sys.exit(1)
 
 from .tk_generator import get_tk
